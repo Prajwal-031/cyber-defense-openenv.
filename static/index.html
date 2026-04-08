@@ -488,6 +488,41 @@
         .alert-log::-webkit-scrollbar-thumb:hover {
             background: #00a8cc;
         }
+
+        a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            color: #00a8cc;
+            text-decoration: underline;
+        }
+
+        ul, ol {
+            list-style-position: inside;
+        }
+
+        section {
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        pre {
+            font-family: 'Courier New', monospace;
+            line-height: 1.4;
+        }
     </style>
 </head>
 <body>
@@ -497,8 +532,22 @@
                 <div>
                     <h1>🛡️ CYBER INCIDENT DEFENDER</h1>
                     <p>Blue Team Response Simulator</p>
+                    <p style="font-size:0.9rem;color:#00d4ff;margin-top:8px;">
+                        🚀 <strong>Hugging Face Space:</strong> 
+                        <a href="https://huggingface.co/spaces/mprajwal11/cyber-defense-openenv" target="_blank" style="text-decoration:underline;">
+                            mprajwal11/cyber-defense-openenv
+                        </a>
+                    </p>
                 </div>
                 <span id="statusBadge" class="status-badge idle">IDLE</span>
+            </div>
+
+            <div style="background:rgba(0,212,255,0.1);border-left:3px solid #00d4ff;padding:12px;border-radius:4px;margin-bottom:15px;">
+                <p style="margin:0;font-size:0.95rem;color:#b0b0b0;">
+                    <strong style="color:#00d4ff;">About:</strong> OpenEnv-compliant simulation environment for training AI defenders in cybersecurity incident response. 
+                    Evaluate your agents' decision-making under pressure with real-time network attacks, multi-step scenarios (Easy/Medium/Hard), 
+                    and reward-based learning. Deploy AI models as blue team defenders in a realistic SOC environment.
+                </p>
             </div>
 
             <div class="task-selector">
@@ -507,6 +556,10 @@
                 <button class="btn" id="hardBtn" onclick="selectTask('hard')">Hard</button>
                 <button class="btn primary" id="resetBtn" onclick="resetGame()">Start Game</button>
             </div>
+            
+            <p style="color:#00d4ff;font-size:1.1rem;margin-top:15px;">
+                Train and evaluate AI agents in a realistic cyber attack simulation with long-horizon decision making.
+            </p>
         </header>
 
         <div class="grid wide">
@@ -544,8 +597,14 @@
             <div class="card">
                 <div class="card-title">Game Information</div>
                 
+                <p style="font-size:0.9rem;color:#b0b0b0;margin-bottom:12px;">
+                    You are a Blue Team defender in a Security Operations Center. Your mission: detect, investigate, 
+                    and contain malicious actors attacking your enterprise network. Every step matters—the attacker spreads 
+                    laterally, so you must act fast and strategically to minimize damage.
+                </p>
+                
                 <div class="scenario-info">
-                    <strong>Task:</strong> <span id="taskName">None</span><br>
+                    <strong>Current Task:</strong> <span id="taskName">None</span><br>
                     <strong>Scenario:</strong> <span id="scenarioName">-</span><br>
                     <strong>Stage:</strong> <span id="stageName">-</span>
                 </div>
@@ -622,6 +681,189 @@
             </div>
         </div>
 
+        <!-- Information Sections Navigation -->
+        <section style="margin-bottom:40px;">
+            <div class="card" style="background:linear-gradient(135deg, rgba(0,212,255,0.2) 0%, rgba(255,0,110,0.1) 100%);border:2px solid #00d4ff;box-shadow:0 0 30px rgba(0,212,255,0.3);">
+                <div class="card-title" style="font-size:1.5rem;margin-bottom:25px;">📚 EXPLORE DOCUMENTATION</div>
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:15px;margin:0;">
+                    <a href="#project-overview" style="padding:16px;background:linear-gradient(135deg, #00d4ff 0%, #00a8cc 100%);border:none;border-radius:8px;text-decoration:none;color:#0a0e27;font-weight:700;text-align:center;font-size:0.95rem;transition:all 0.3s;cursor:pointer;display:block;" onmouseover="this.style.transform='scale(1.05)';this.style.boxShadow='0 0 20px rgba(0,212,255,0.8)'" onmouseout="this.style.transform='scale(1)';this.style.boxShadow='none'">
+                        📖 PROJECT OVERVIEW
+                    </a>
+                    <a href="#why-matters" style="padding:16px;background:linear-gradient(135deg, #ffd60a 0%, #ffb703 100%);border:none;border-radius:8px;text-decoration:none;color:#0a0e27;font-weight:700;text-align:center;font-size:0.95rem;transition:all 0.3s;cursor:pointer;display:block;" onmouseover="this.style.transform='scale(1.05)';this.style.boxShadow='0 0 20px rgba(255,214,10,0.8)'" onmouseout="this.style.transform='scale(1)';this.style.boxShadow='none'">
+                        ⚔️ WHY IT MATTERS
+                    </a>
+                    <a href="#what-unique" style="padding:16px;background:linear-gradient(135deg, #00ff41 0%, #00cc33 100%);border:none;border-radius:8px;text-decoration:none;color:#0a0e27;font-weight:700;text-align:center;font-size:0.95rem;transition:all 0.3s;cursor:pointer;display:block;" onmouseover="this.style.transform='scale(1.05)';this.style.boxShadow='0 0 20px rgba(0,255,65,0.8)'" onmouseout="this.style.transform='scale(1)';this.style.boxShadow='none'">
+                        ✨ WHAT'S UNIQUE
+                    </a>
+                    <a href="#architecture" style="padding:16px;background:linear-gradient(135deg, #ff006e 0%, #cc0055 100%);border:none;border-radius:8px;text-decoration:none;color:#ffffff;font-weight:700;text-align:center;font-size:0.95rem;transition:all 0.3s;cursor:pointer;display:block;" onmouseover="this.style.transform='scale(1.05)';this.style.boxShadow='0 0 20px rgba(255,0,110,0.8)'" onmouseout="this.style.transform='scale(1)';this.style.boxShadow='none'">
+                        🏗️ ARCHITECTURE
+                    </a>
+                    <a href="#how-try" style="padding:16px;background:linear-gradient(135deg, #00d4ff 0%, #00a8cc 100%);border:none;border-radius:8px;text-decoration:none;color:#0a0e27;font-weight:700;text-align:center;font-size:0.95rem;transition:all 0.3s;cursor:pointer;display:block;" onmouseover="this.style.transform='scale(1.05)';this.style.boxShadow='0 0 20px rgba(0,212,255,0.8)'" onmouseout="this.style.transform='scale(1)';this.style.boxShadow='none'">
+                        🎮 HOW TO TRY
+                    </a>
+                    <a href="#project-links" style="padding:16px;background:linear-gradient(135deg, #9d4edd 0%, #7209b7 100%);border:none;border-radius:8px;text-decoration:none;color:#ffffff;font-weight:700;text-align:center;font-size:0.95rem;transition:all 0.3s;cursor:pointer;display:block;" onmouseover="this.style.transform='scale(1.05)';this.style.boxShadow='0 0 20px rgba(157,78,221,0.8)'" onmouseout="this.style.transform='scale(1)';this.style.boxShadow='none'">
+                        🔗 PROJECT LINKS
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Overview Section -->
+        <section style="margin-bottom:40px;" id="project-overview">
+        <section style="margin-bottom:40px;">
+            <div class="card">
+                <div class="card-title">Project Overview</div>
+                <p style="margin-bottom:12px;">
+                <strong>Cyber Incident Response OpenEnv</strong> is a long-horizon simulation 
+                environment designed for evaluating AI agents in real-world cybersecurity 
+                defense scenarios.
+                </p>
+
+                <p style="margin-bottom:12px;">
+                The environment models a Security Operations Center (SOC) where an AI 
+                defender must detect, investigate, and contain cyber attacks launched 
+                by an automated adversary. The system supports multi-step decision making, 
+                dynamic attack propagation, and measurable defensive outcomes.
+                </p>
+
+                <p>
+                This project follows the <strong>OpenEnv standard</strong> for interactive AI 
+                environments and demonstrates how large language models can assist in 
+                real-time cyber defense.
+                </p>
+            </div>
+        </section>
+
+        <!-- Why This Environment Matters -->
+        <section style="margin-bottom:40px;" id="why-matters">
+            <div class="card">
+                <div class="card-title">Why This Environment Matters</div>
+
+                <ul style="line-height:1.8; padding-left:20px; margin:0;">
+                    <li>⚔️ Simulates real red-team vs blue-team cyber conflict</li>
+                    <li>🧠 Designed for evaluating autonomous AI security agents</li>
+                    <li>🔄 Long-horizon decision making instead of single-step tasks</li>
+                    <li>📊 Reward shaping and task grading for agent benchmarking</li>
+                    <li>🌐 Deployable through Hugging Face Spaces using Docker</li>
+                    <li>🔌 Compatible with OpenEnv standard interfaces</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- What Makes This Unique -->
+        <section style="margin-bottom:40px;" id="what-unique">
+            <div class="card">
+                <div class="card-title">What Makes This Unique</div>
+
+                <ul style="line-height:1.8; padding-left:20px; margin:0;">
+                    <li>⚡ Real-time adversarial simulation (not static datasets)</li>
+                    <li>🧩 Multi-step decision environment (not single-shot tasks)</li>
+                    <li>🤖 Designed specifically for LLM-based agents</li>
+                    <li>📈 Continuous reward signals for learning evaluation</li>
+                    <li>🔁 Multiple attack scenarios for trajectory diversity</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- System Architecture -->
+        <section style="margin-bottom:40px;" id="architecture">
+            <div class="card">
+                <div class="card-title">System Architecture</div>
+
+                <pre style="background:#000;padding:15px;border-radius:6px;color:#00ffcc;font-size:0.9rem;overflow-x:auto;margin-bottom:15px;">
+AI Agent / User
+        │
+        ▼
+  Web Dashboard
+        │
+        ▼
+FastAPI Environment API
+        │
+        ▼
+CyberIncidentEnv
+(step / reset / state)
+        │
+        ▼
+Red Team Attack Simulator
+        │
+        ▼
+Enterprise Network Simulation
+(4 Hosts: WS-1, WS-2, File Server, DB Server)
+                </pre>
+
+                <p style="margin-bottom:0;">
+                The environment exposes the standard OpenEnv interface enabling AI models 
+                to interact with a simulated cybersecurity infrastructure.
+                </p>
+            </div>
+        </section>
+
+        <!-- Example Episode -->
+        <section style="margin-bottom:40px;">
+            <div class="card">
+                <div class="card-title">Example Episode</div>
+
+                <pre style="background:#000;padding:15px;border-radius:6px;color:#00ffcc;">
+Step 1: Alert → Suspicious login detected (WS-1)
+Step 2: Malware infection → WS-1 compromised
+Step 3: Agent Action → isolate_host(WS-1)
+Step 4: Attack blocked → lateral movement prevented
+Step 5: Patch applied → system restored
+
+Final Score: 0.92
+                </pre>
+
+                <p style="margin-top:10px; margin-bottom:0;">
+                The agent must react quickly to evolving threats. Delayed or incorrect 
+                actions allow attackers to spread across the network.
+                </p>
+            </div>
+        </section>
+
+        <!-- Quick Demo Instructions -->
+        <section style="margin-bottom:40px;" id="how-try">
+            <div class="card">
+                <div class="card-title">How to Try the Simulator</div>
+
+                <ol style="line-height:1.8;padding-left:20px;margin:0;">
+                    <li>Select a difficulty level (Easy, Medium, Hard).</li>
+                    <li>Click <strong>Start Game</strong> to initialize the environment.</li>
+                    <li>Investigate hosts to detect suspicious activity.</li>
+                    <li>Isolate infected systems to prevent lateral movement.</li>
+                    <li>Patch vulnerable machines to restore the network.</li>
+                </ol>
+
+                <p style="margin-top:12px;margin-bottom:0;">
+                Your goal is to protect critical servers before the attacker 
+                compromises the network.
+                </p>
+            </div>
+        </section>
+
+        <!-- Project Links -->
+        <section style="margin-bottom:40px;" id="project-links">
+            <div class="card">
+                <div class="card-title">Project Links</div>
+
+                <p style="margin-bottom:12px;">
+                🔗 <strong>GitHub Repository:</strong><br>
+                <a href="https://github.com/Prajwal-031/cyber-defense-openenv" target="_blank" style="color:#00d4ff;text-decoration:none;">
+                View Source Code
+                </a>
+                </p>
+
+                <p style="margin-bottom:12px;">
+                🚀 <strong>Live Environment API:</strong><br>
+                This Hugging Face Space provides the interactive simulation interface.
+                </p>
+
+                <p style="margin-bottom:0;">
+                📄 <strong>OpenEnv Specification:</strong><br>
+                Compatible with the OpenEnv interface for AI evaluation and benchmarking.
+                </p>
+            </div>
+        </section>
+
         <!-- End Game Modal -->
         <div id="gameOverModal" class="modal">
             <div class="modal-content">
@@ -670,26 +912,27 @@
 
         async function resetGame() {
             try {
-                updateStatusBadge(true);
                 const response = await fetch(`${API_BASE}/reset`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ task_id: state.currentTask })
                 });
                 
-                if (!response.ok) throw new Error('Failed to reset game');
+                if (!response.ok) throw new Error(`HTTP ${response.status}: ${response.statusText}`);
                 
+                const data = await response.json();
                 state.gameStarted = true;
                 state.totalReward = 0;
                 state.stepCount = 0;
+                state.gameState = data;
                 
-                const data = await response.json();
-                updateGameState(data, 0);
+                updateStatusBadge(true);
                 enableActions();
-                addAlert('Game Started', 'critical');
+                addAlert('Game Started - ' + state.currentTask.toUpperCase(), 'critical');
                 updateUI();
             } catch (error) {
                 console.error('Reset error:', error);
+                updateStatusBadge(false);
                 addAlert('Failed to start game: ' + error.message, 'high');
             }
         }
@@ -740,7 +983,7 @@
 
         function updateGameState(observation, reward) {
             state.gameState = observation;
-            state.stepCount++;
+            // Don't increment stepCount here - it's already done in takeAction
         }
 
         function gameOver(finalScore) {
@@ -806,14 +1049,13 @@
             if (!state.gameState) return;
             
             document.getElementById('infectedCount').textContent = 
-                state.gameState.suspected_hosts.length;
-            document.getElementById('maxSteps').textContent = 
-                state.gameState.time_step ? Math.ceil((state.gameState.time_step / state.gameState.time_step) * 10) : 10;
-            document.getElementById('scenarioName').textContent = 'Multiple';
-            document.getElementById('stageName').textContent = 'Active';
+                state.gameState.suspected_hosts ? state.gameState.suspected_hosts.length : 0;
+            document.getElementById('maxSteps').textContent = 10;
+            document.getElementById('scenarioName').textContent = state.currentTask.toUpperCase();
+            document.getElementById('stageName').textContent = state.gameStarted ? 'Active' : 'Idle';
             
             const progress = state.stepCount / 10 * 100;
-            document.getElementById('progressFill').style.width = progress + '%';
+            document.getElementById('progressFill').style.width = Math.min(progress, 100) + '%';
         }
 
         function updateAlerts() {
