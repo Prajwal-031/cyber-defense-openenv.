@@ -1,0 +1,32 @@
+name: Cyber Incident Response OpenEnv
+version: 1.0.0
+description: A real-world cybersecurity incident response simulation environment for AI agents.
+tasks:
+  - id: easy
+    goal: contain infection on one host
+    max_steps: 10
+  - id: medium
+    goal: stop malware lateral movement
+    max_steps: 20
+  - id: hard
+    goal: protect critical servers from compromise
+    max_steps: 30
+observation_space:
+  alerts: List[Alert]
+  suspected_hosts: List[str]
+  infected_estimate: int
+  time_step: int
+  network_status: Dict[str, HostStatus]
+action_space:
+  investigate_host: Optional[str]
+  isolate_host: Optional[str]
+  patch_host: Optional[str]
+  block_ip: Optional[str]
+reward_range: [-1.0, 1.0]
+score_range: [0.0, 1.0]
+deployment:
+  type: docker
+  port: 7860
+  runtime:
+    vcpu: 2
+    ram: 8GB

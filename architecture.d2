@@ -1,0 +1,36 @@
+direction: right
+
+CyberIncidentEnv: {
+  shape: class
+  label: "Cyber Incident Response OpenEnv"
+}
+
+subgraph env_dir {
+  label: "env/"
+  models: { shape: rectangle; label: "models.py" }
+  environment: { shape: rectangle; label: "environment.py" }
+  tasks: { shape: rectangle; label: "tasks.py" }
+  grader: { shape: rectangle; label: "grader.py" }
+}
+
+server: { shape: rectangle; label: "server.py (FastAPI)" }
+inference: { shape: rectangle; label: "inference.py" }
+
+env_dir.models -> env_dir.environment
+env_dir.tasks -> env_dir.environment
+env_dir.grader -> env_dir.environment
+
+inference -> env_dir.environment: "Interacts with"
+server -> env_dir.environment: "Exposes"
+
+User -> inference: "Runs"
+User -> server: "Accesses API"
+
+HuggingFaceSpace: { shape: cloud; label: "Hugging Face Space" }
+Docker: { shape: cylinder; label: "Dockerfile" }
+
+Docker -> HuggingFaceSpace: "Deploys to"
+server -> Docker: "Runs in"
+
+OpenAI: { shape: cloud; label: "OpenAI API" }
+inference -> OpenAI: "LLM Calls"
