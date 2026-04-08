@@ -1,52 +1,66 @@
+---
+title: Cyber Incident Response OpenEnv
+emoji: 🛡️
+colorFrom: blue
+colorTo: purple
+sdk: docker
+sdk_version: null
+app_file: server.py
+pinned: false
+---
+
 # Cyber Incident Response OpenEnv
 
-## Environment Description
+A comprehensive simulation environment for training AI agents as Blue Team defenders in cybersecurity incident response scenarios.
 
-The **Cyber Incident Response OpenEnv** is a simulated environment designed to train and evaluate AI agents as **Blue Team defenders** in a Security Operations Center (SOC) setting. The environment models a small enterprise network, where the agent must detect, investigate, contain, and remediate cyber threats originating from automated **Red Team attacks**.
+## Features
 
-This simulation supports **long-running multi-step trajectories**, allowing agents to develop sophisticated incident response strategies. It provides a realistic yet controlled setting to test AI capabilities in cybersecurity defense.
+- **Real-time Simulation**: Interactive cyber incident response environment with multiple difficulty levels (easy, medium, hard)
+- **Network Visualization**: Live dashboard showing host status, alerts, and infection spread
+- **Defensive Actions**: Investigate, isolate, and patch hosts to contain cyber threats
+- **API-Driven**: RESTful API for programmatic access and AI agent training
+- **Rule-Based Fallback**: Works without LLM when API quotas are exceeded
 
-## Architecture Diagram
+## How to Use
 
-Below is an architectural overview of the Cyber Incident Response OpenEnv project:
+1. **Start Game**: Click "Start Game" to initialize a new scenario
+2. **Select Difficulty**: Choose between Easy, Medium, or Hard tasks
+3. **Monitor Network**: Watch the real-time network status and alerts
+4. **Take Actions**: Use defensive actions to investigate and contain threats
+5. **Track Progress**: Monitor your score and step count
 
-![Architecture Diagram](./architecture.png)
+## API Endpoints
 
-## Action and Observation Spaces
+- `GET /` - Main dashboard
+- `POST /api/reset` - Start new game
+- `POST /api/step` - Execute defender action
+- `GET /api/state` - Get current game state
+- `GET /api/tasks` - List available tasks
+- `GET /api/health` - Health check
 
-The environment utilizes **Pydantic models** for strict type validation of its observation and action spaces, ensuring robust interaction between the agent and the environment.
+## Technical Details
 
-### Observation Space
+- **Backend**: FastAPI with Pydantic validation
+- **Frontend**: Responsive HTML/CSS/JavaScript dashboard
+- **Environment**: Custom cyber incident simulation
+- **Deployment**: Docker containerized for portability
+- **Testing**: 18 comprehensive automated tests
 
-Observations provide the agent with critical information about the network state and ongoing threats. Key fields include:
+## Development
 
-| Field             | Type          | Description                                                      |
-| :---------------- | :------------ | :--------------------------------------------------------------- |
-| `alerts`          | `List[Alert]` | A list of recent security alerts, including host, severity, and message. |
-| `suspected_hosts` | `List[str]`   | Names of hosts currently suspected of being infected.            |
-| `infected_estimate`| `int`         | An estimated count of infected hosts in the network.             |
-| `time_step`       | `int`         | The current time step in the simulation.                         |
-| `network_status`  | `Dict[str, HostStatus]` | Current status of each host in the network (clean, infected, isolated, patched). |
+This project includes:
+- Complete test suite (18 tests, 100% pass rate)
+- Comprehensive documentation (9 guides)
+- Production-ready Docker configuration
+- Type hints and error handling throughout
 
-### Action Space
+## License
 
-Actions allow the agent to interact with the environment to mitigate threats. Available actions include:
+MIT License - see LICENSE file for details
 
-| Action            | Type          | Description                                                      |
-| :---------------- | :------------ | :--------------------------------------------------------------- |
-| `investigate_host`| `Optional[str]`| Specifies a host to investigate for signs of compromise.         |
-| `isolate_host`    | `Optional[str]`| Isolates a specified host from the network to prevent further spread. |
-| `patch_host`      | `Optional[str]`| Applies security patches or remediations to a specified host.    |
-| `block_ip`        | `Optional[str]`| Blocks a malicious IP address (placeholder for future expansion).|
+---
 
-## Task Descriptions
-
-The environment defines three tasks of increasing difficulty to challenge AI agents:
-
-### Easy Task
-*   **Goal**: Contain infection on one host.
-*   **`max_steps`**: 10
-*   **Scenario**: Phishing Attack
+*Built with FastAPI, deployed on Hugging Face Spaces*
 
 ### Medium Task
 *   **Goal**: Stop malware lateral movement.
